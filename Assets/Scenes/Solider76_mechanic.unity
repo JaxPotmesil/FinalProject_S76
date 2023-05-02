@@ -993,6 +993,7 @@ GameObject:
   - component: {fileID: 882258660}
   - component: {fileID: 882258666}
   - component: {fileID: 882258668}
+  - component: {fileID: 882258669}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1012,11 +1013,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582df03e9ebf3b94fa2ba05040761887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 14
   rigidB: {fileID: 882258661}
-  walkSpeed: 12
-  runSpeed: 15
-  maxacel: 15
+  walkSpeed: 14
+  runSpeed: 20
+  maxacel: 100
   gun: {fileID: 251210681}
   gunNormal: {fileID: 1015351276}
   gunSprint: {fileID: 1680157451}
@@ -1274,6 +1275,21 @@ MonoBehaviour:
   gun: {fileID: 251210681}
   HelexBullet: {fileID: 352282741993262313, guid: 7eb58c7628d31b54e841397bb3f7ec0e, type: 3}
   helexCoolDown: 7
+--- !u!114 &882258669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882258659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ab3370f7469e14c96270c234b8fc49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  RTHealth: 10
+  healthText: {fileID: 412220947}
 --- !u!1 &1015351276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,6 +1366,7 @@ GameObject:
   - component: {fileID: 1459557212}
   - component: {fileID: 1459557211}
   - component: {fileID: 1459557210}
+  - component: {fileID: 1459557214}
   m_Layer: 0
   m_Name: EnemyShoot
   m_TagString: Untagged
@@ -1433,6 +1450,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1459557214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459557209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6ef4b933030c24ab460358b4c966fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBullet: {fileID: 3033583030805412634, guid: ca2fdb74ad534f543b855b9eeec26b5b, type: 3}
+  shootSpeed: 3
+  player: {fileID: 0}
 --- !u!1 &1522307678
 GameObject:
   m_ObjectHideFlags: 0
