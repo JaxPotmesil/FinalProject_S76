@@ -29,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     {
         RTHealth = RTHealth + healthAmount;
         RTHealth = Mathf.Clamp(RTHealth, 0, maxHealth);
+        updateUI();
     }
 
     public void Respawn()
