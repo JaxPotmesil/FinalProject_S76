@@ -43,16 +43,14 @@ public class PlayerMovement : MonoBehaviour
         if (sprintCon.performed)
         {
             speed = runSpeed;
-            gun.transform.parent = gunSprint.transform;
-            gun.transform.localPosition = Vector3.zero;
-            gun.transform.localRotation = Quaternion.identity;
+            gun.transform.localPosition = gunSprint.transform.localPosition;
+            gun.transform.localRotation = gunSprint.transform.localRotation;
         }
         else if (sprintCon.canceled)
         {
             speed = walkSpeed;
-            gun.transform.parent = gunNormal.transform;
-            gun.transform.localPosition = Vector3.zero;
-            gun.transform.localRotation = Quaternion.identity;
+            gun.transform.localPosition = gunNormal.transform.localPosition;
+            gun.transform.localRotation = gunNormal.transform.localRotation;
         }
     }
 
@@ -61,9 +59,8 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed)
         {
             speed = walkSpeed;
-            gun.transform.parent = gunNormal.transform;
-            gun.transform.localPosition = Vector3.zero;
-            gun.transform.localRotation = Quaternion.identity;
+            gun.transform.localPosition = gunNormal.transform.localPosition;
+            gun.transform.localRotation = gunNormal.transform.localRotation;
         }
     }
 }
