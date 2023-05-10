@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class ULT_Ability : MonoBehaviour
 {
-    public List<GameObject> enemy;
+    public List<EnemyHealth> enemyhealth;
     public RectTransform TargetIndicator;
     [SerializeField]
     private float cooldown;
@@ -15,7 +15,7 @@ public class ULT_Ability : MonoBehaviour
     [SerializeField]
     private bool CanUse = true;
     [SerializeField]
-    private bool active;
+    public bool active;
 
     // Update is called once per frame
     void Update()
@@ -25,10 +25,11 @@ public class ULT_Ability : MonoBehaviour
             return;
         }
         Vector2 closestScreenPos = new Vector2(10000, 10000);
-        foreach(GameObject g in enemy)
+        foreach(EnemyHealth g in enemyhealth)
         {
-            Vector2 screenPos = (Vector2)Camera.main.WorldToScreenPoint(g.transform.position)- new Vector2(Screen.width/2, Screen.height/2);
-            if (screenPos.magnitude<closestScreenPos.magnitude)
+            Vector3 v3ScreenPos = Camera.main.WorldToScreenPoint(g.transform.position);
+            Vector2 screenPos = (Vector2) v3ScreenPos - new Vector2(Screen.width/2, Screen.height/2);
+            if (screenPos.magnitude<closestScreenPos.magnitude && !g.DeathCheck && v3ScreenPos.z > 0)
             {
                 closestScreenPos = screenPos;
             }

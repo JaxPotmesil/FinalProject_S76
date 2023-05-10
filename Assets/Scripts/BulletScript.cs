@@ -8,7 +8,7 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.up * speed * Time.deltaTime;
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
     private void OnTriggerEnter(Collider other)
     {

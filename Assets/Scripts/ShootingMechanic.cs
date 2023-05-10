@@ -13,6 +13,7 @@ public class ShootingMechanic : MonoBehaviour
     private bool canShootHelex = true;
     [SerializeField]
     private float helexCoolDown;
+    public ULT_Ability ULT;
     
 
     IEnumerator shootDelay()
@@ -21,8 +22,28 @@ public class ShootingMechanic : MonoBehaviour
         yield return new WaitForSeconds(1 / fireRate);
         
         GameObject g = Instantiate(bullet);
+        Vector3 target = new Vector3();
+        Vector3 screenPos = new Vector3();
+        if (ULT.active)
+        {
+            screenPos = ULT.TargetIndicator.position;
+        }
+        else
+        {
+            screenPos = new Vector3(Screen.width / 2, Screen.height / 2);
+        }
+        Ray ray = Camera.main.ScreenPointToRay(screenPos);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            target = hit.point;
+        }
+        else
+        {
+            target = ray.GetPoint(100);
+        }
+       
         g.transform.position = gun.transform.position;
-        g.transform.rotation = gun.transform.rotation;
+        g.transform.LookAt(target, Vector3.up);
         StartCoroutine(shootDelay());
         
     }

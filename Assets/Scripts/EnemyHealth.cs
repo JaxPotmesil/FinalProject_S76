@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     private float RTHealth;
     [SerializeField]
     private float respawnTime;
+    public bool DeathCheck;
 
     public void takeDamage(float healthAmount)
     {
@@ -24,12 +25,14 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator Respawn()
     {
+        DeathCheck = true;
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(respawnTime);
         GetComponent<MeshRenderer>().enabled = true;
         GetComponent<Collider>().enabled = true;
         RTHealth = maxHealth;
+        DeathCheck = false;
     }
 
 }
